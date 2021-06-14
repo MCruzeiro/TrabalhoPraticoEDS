@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Jun-2021 às 22:55
+-- Tempo de geração: 14-Jun-2021 às 19:55
 -- Versão do servidor: 10.4.18-MariaDB
 -- versão do PHP: 8.0.3
 
@@ -112,7 +112,8 @@ CREATE TABLE `backend_user` (
 INSERT INTO `backend_user` (`id`, `firstName`, `lastName`, `username`, `password`, `authKey`) VALUES
 (0, '', '', 'Admin', '123', '123'),
 (1, '', '', 'Cliente', '123', '123'),
-(2, '', '', 'Funcionario', '123', '123');
+(2, '', '', 'Funcionario', '123', '123'),
+(3, 'Miguel', 'Cruzeiro', 'MCruzeiro', '123', '123');
 
 -- --------------------------------------------------------
 
@@ -233,6 +234,28 @@ INSERT INTO `funcionario` (`num_funcionario`, `nome`, `dt_nascimento`, `num_cont
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `new_user`
+--
+
+CREATE TABLE `new_user` (
+  `nome` varchar(20) NOT NULL,
+  `apelido` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `authKey` char(50) NOT NULL,
+  `username` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `new_user`
+--
+
+INSERT INTO `new_user` (`nome`, `apelido`, `email`, `password`, `authKey`, `username`) VALUES
+('Miguel', 'Cruzeiro', 'mcruzeiro@ipvc.pt', '123', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `pacotes`
 --
 
@@ -272,6 +295,16 @@ INSERT INTO `pagamento` (`num_pagamento`, `tipo_pagamento`, `data`, `valor_pagar
 (2, 'PAYPAL', '2021-05-23', 26.00),
 (3, 'MBWAY', '2021-06-02', 65.00),
 (4, 'MBWAY', '2021-06-13', 50.00);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `perfil`
+--
+
+CREATE TABLE `perfil` (
+  `perfil` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -430,6 +463,12 @@ ALTER TABLE `pacotes`
 --
 ALTER TABLE `pagamento`
   ADD PRIMARY KEY (`num_pagamento`);
+
+--
+-- Índices para tabela `perfil`
+--
+ALTER TABLE `perfil`
+  ADD PRIMARY KEY (`perfil`);
 
 --
 -- Índices para tabela `reserva`
